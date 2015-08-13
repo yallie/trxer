@@ -723,7 +723,10 @@
               </tr>
               <tr class="visibleRow">
                 <td class="alert-status-failed">
-                  <xsl:value-of select="/t:TestRun/t:Results/t:UnitTestResult[@testId=$testId]/t:Output/t:ErrorInfo/t:StackTrace" />
+                  <xsl:value-of select="text" />
+                  <xsl:call-template name="break">
+                    <xsl:with-param name="text" select="/t:TestRun/t:Results/t:UnitTestResult[@testId=$testId]/t:Output/t:ErrorInfo/t:StackTrace" />
+                  </xsl:call-template>
                 </td>
               </tr>
             </tbody>
@@ -743,7 +746,10 @@
               </tr>
               <tr class="visibleRow">
                 <td class="alert-status-out">
-                  <xsl:value-of select="/t:TestRun/t:Results/t:UnitTestResult[@testId=$testId]/t:Output/t:StdOut" />
+                  <xsl:value-of select="text" />
+                  <xsl:call-template name="break">
+                    <xsl:with-param name="text" select="/t:TestRun/t:Results/t:UnitTestResult[@testId=$testId]/t:Output/t:StdOut" />
+                  </xsl:call-template>
                 </td>
               </tr>
             </tbody>
@@ -763,7 +769,10 @@
               </tr>
               <tr class="visibleRow">
                 <td class="alert-status-err">
-                  <xsl:value-of select="/t:TestRun/t:Results/t:UnitTestResult[@testId=$testId]/t:Output/t:StdErr" />
+                  <xsl:value-of select="text" />
+                  <xsl:call-template name="break">
+                    <xsl:with-param name="text" select="/t:TestRun/t:Results/t:UnitTestResult[@testId=$testId]/t:Output/t:StdErr" />
+                  </xsl:call-template>
                 </td>
               </tr>
             </tbody>
@@ -783,7 +792,10 @@
               </tr>
               <tr class="visibleRow">
                 <td class="alert-status-description">
-                  <xsl:value-of select="/t:TestRun/t:Results/t:UnitTestResult[@testId=$testId]/t:Output/t:StdErr" />
+                  <xsl:value-of select="text" />
+                  <xsl:call-template name="break">
+                    <xsl:with-param name="text" select="/t:TestRun/t:Results/t:UnitTestResult[@testId=$testId]/t:Output/t:StdErr" />
+                  </xsl:call-template>
                 </td>
               </tr>
             </tbody>
@@ -864,5 +876,23 @@
       </xsl:if>
     </xsl:for-each>
   </xsl:template>
+
+  <xsl:template name="break">
+    <xsl:param name="text" />
+    <xsl:param name="replace" select="'&#10;'" />
+    <xsl:choose>
+      <xsl:when test="contains($text,$replace)">
+        <xsl:value-of select="substring-before($text,$replace)"/>
+        <br />
+        <xsl:call-template name="break">
+          <xsl:with-param name="text" select="substring-after($text,$replace)"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="$text" />
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
 </xsl:stylesheet>
 
