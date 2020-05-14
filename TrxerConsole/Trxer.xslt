@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:msxsl="urn:schemas-microsoft-com:xslt" exclude-result-prefixes="msxsl"
     xmlns:t="http://microsoft.com/schemas/VisualStudio/TeamTest/2010"
@@ -12,21 +12,24 @@
     <![CDATA[
     public string RemoveAssemblyName(string asm) 
     {
-        int idx = asm.IndexOf(',');
-        if (idx == -1)
+        if (asm.IndexOf(',') > 0) {
+            return asm.Substring(0, asm.IndexOf(','));
+        } else {
             return asm;
-        return asm.Substring(0, idx);
+        }
     }
+
     public string RemoveNamespace(string asm) 
     {
       int coma = asm.IndexOf(',');
       return asm.Substring(coma + 2, asm.Length - coma - 2);
     }
+
     public string GetShortDateTime(string time)
     {
-      if( string.IsNullOrEmpty(time) )
+      if (string.IsNullOrEmpty(time))
       {
-        return string.Empty;
+         return string.Empty;
       }
       
       return DateTime.Parse(time).ToString();
@@ -48,7 +51,7 @@
     
     public string ToExactTimeDefinition(string duration)
     {
-      if( string.IsNullOrEmpty(duration) )
+      if (string.IsNullOrEmpty(duration))
       {
         return string.Empty;
       } 
