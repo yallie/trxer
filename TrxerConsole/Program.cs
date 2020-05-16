@@ -74,13 +74,12 @@ namespace TrxerConsole
         /// </summary>
         /// <param name="fileName">Trx file path</param>
         /// <param name="xsl">Xsl document</param>
-        /// <param name="outputFile"></param>
-        private static void Transform(string fileName, XmlDocument xsl, string outputFile)
+        private static void Transform(string fileName, XmlDocument xsl)
         {
             XslCompiledTransform x = new XslCompiledTransform(true);
             x.Load(xsl, new XsltSettings(true, true), null);
             Console.WriteLine("Transforming...");
-            x.Transform(fileName, outputFile);
+            x.Transform(fileName, fileName + OUTPUT_FILE_EXT);
             Console.WriteLine("Done transforming xml into html");
         }
 
