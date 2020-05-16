@@ -122,6 +122,14 @@
     background-color: #5bab5b;
 }
 
+.statusBarWarning {
+    background-color: #ffbb3e;
+}
+
+.statusBarWarningInner {
+    background-color: #ec9d0b;
+}
+
 .statusBarFailed,
 .statusBarError {
     background-color: #b93333;
