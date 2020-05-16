@@ -3,7 +3,7 @@
 <h3>Transforms trx file into html</h3><br/>
 
 [![Appveyor](https://img.shields.io/appveyor/build/yallie/trxer)](https://ci.appveyor.com/project/yallie/trxer)
-[![TrxerConsole.exe](https://img.shields.io/badge/TrxerConsole.exe-v1.0.0.4-orange)](https://ci.appveyor.com/api/buildjobs/f4s3ouc0n075jnh3/artifacts/TrxerConsole%2Fbin%2FDebug%2FTrxerConsole.exe)
+[![TrxerConsole.exe](https://img.shields.io/badge/TrxerConsole.exe-v1.0.0.4-orange)](https://github.com/yallie/trxer/releases/download/v1.0.0.4/TrxerConsole.exe)
 
 Trxer is a new way to view Trx Reports,all you need is a browser<br/>
 Trxer website is no longer online: [http://wingsrom.ro/trxer/](https://web.archive.org/web/20171109163305/http://wingsrom.ro/trxer/)<br/>
